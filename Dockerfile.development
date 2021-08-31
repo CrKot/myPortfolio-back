@@ -1,0 +1,11 @@
+FROM node:16.0.0
+WORKDIR /myPortfolio/backend
+
+COPY . /myPortfolio/backend/
+
+RUN npm install -g nodemon
+RUN npm install
+
+EXPOSE 8080
+
+CMD npm run dev
