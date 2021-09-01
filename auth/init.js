@@ -31,12 +31,12 @@ export default function(passport) {
         try {
           const user = await User.findOne({ email: email })
           if (!user) {
-            return done(null, false, errorMap.authorizationFailed )
+            return done(null, false, errorMap.user.authorizationFailed )
           }
 
           const isPasswordCorrect = await bcrypt.compare(password, user.password)
           if(!isPasswordCorrect) {
-            return done(null, false, errorMap.authorizationFailed )
+            return done(null, false, errorMap.user.authorizationFailed )
           }
           return done(null, user)
         }

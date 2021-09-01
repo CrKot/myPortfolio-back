@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import mongooseConection from './util/mongoose.js';
 import authRoutes from './routes/auth.js';
+import userRoutes from './routes/user.js'
 import passport from 'passport';
 import session from 'express-session';
 import initializeStrategies from './auth/init.js';
@@ -29,6 +30,7 @@ app.use(passport.initialize())
 initializeStrategies(passport)
 
 app.use('/auth', authRoutes)
+app.use('/user', passport.authenticate('jwt', { session: false }), userRoutes)
 
 // Подключаем базу данных
 mongooseConection()
