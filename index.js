@@ -36,5 +36,5 @@ app.use('/user', passport.authenticate('jwt', { session: false }), userRoutes)
 mongooseConection(process.env.USE_CLOUD_DB)
 
 app.listen(PORT, () => {
-    console.log(`server sterted on port ${process.env.SERVER_PORT}`)
+    console.log(`server sterted on port ${process.env.PORT}`)
 })
