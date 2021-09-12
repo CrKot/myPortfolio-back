@@ -32,8 +32,8 @@ initializeStrategies(passport)
 app.use('/auth', authRoutes)
 app.use('/user', passport.authenticate('jwt', { session: false }), userRoutes)
 
-// Подключаем базу данных
-mongooseConection()
+// Подключаем базу данных(облако или локальную в докере)
+mongooseConection(process.env.USE_CLOUD_DB)
 
 app.listen(PORT, () => {
     console.log(`server sterted on port ${process.env.SERVER_PORT}`)
